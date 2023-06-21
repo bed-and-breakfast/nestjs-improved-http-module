@@ -1,7 +1,7 @@
 name: CI
-on:
-    push:
-    pull_request:
+'on':
+    push: null
+    pull_request: null
 jobs:
     commit-check:
         name: Check Conventional Commit
@@ -26,10 +26,9 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Node
-              uses: './.github/actions/ci-node-setup'
+              uses: ./.github/actions/ci-node-setup
               with:
                   node-version-file: .nvmrc
-
             - name: Build
               run: npm run build
             - name: Upload build artifacts
@@ -44,10 +43,9 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Node
-              uses: './.github/actions/ci-node-setup'
+              uses: ./.github/actions/ci-node-setup
               with:
                   node-version-file: .nvmrc
-
             - name: Lint
               run: npm run lint
             - name: Format
@@ -57,7 +55,10 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                version: [18, lts/*, latest]
+                version:
+                    - 18
+                    - lts/*
+                    - latest
                 include:
                     - version: 18
                       name: 18
@@ -71,13 +72,11 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Node (${{ matrix.version }})
-              uses: './.github/actions/ci-node-setup'
+              uses: ./.github/actions/ci-node-setup
               with:
                   node-version: ${{ matrix.version }}
-
             - name: Test (With Coverage)
               run: npm run test:coverage
-
             - name: Upload test artifacts
               uses: actions/upload-artifact@v3
               if: success() || failure()
@@ -90,12 +89,11 @@ jobs:
               with:
                   name: test-coverage-${{ matrix.name }}
                   path: coverage/cobertura-coverage.xml
-
             - name: Upload coverage reports to Code Climate
               uses: paambaati/codeclimate-action@v4.0.0
               if: ${{ matrix.name == 'lts' }}
               env:
-                  CC_TEST_REPORTER_ID: 58fee0878c31e85a459cb081232fb69f843bf41b49d4ddf5bfd89373bbba0e81
+                  CC_TEST_REPORTER_ID: 035f1781dd52b769641df927fa8372bed53568164644fb445c2e0d023f12442c
               with:
                   coverageLocations: |
                       coverage/cobertura-coverage.xml:cobertura

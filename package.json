@@ -1,24 +1,26 @@
 {
-    "name": "@bed-and-breakfast/templates-open-source",
-    "version": "4.2.18",
-    "description": "Bed & Breakfast Open Source Template",
+    "name": "@bed-and-breakfast/nestjs-improved-http-module",
+    "version": "0.0.0",
+    "description": "Improved NestJS HttpModule",
     "private": false,
     "engines": {
         "node": ">=18.0.0"
     },
     "repository": {
-        "type": "git",
-        "url": "https://github.com/bed-and-breakfast/templates-open-source.git"
+        "url": "https://github.com/bed-and-breakfast/nestjs-improved-http-module.git"
     },
-    "bugs": "https://github.com/bed-and-breakfast/templates-open-source/issues",
-    "homepage": "https://github.com/bed-and-breakfast/templates-open-source",
+    "bugs": "https://github.com/bed-and-breakfast/nestjs-improved-http-module/issues",
+    "homepage": "https://github.com/bed-and-breakfast/nestjs-improved-http-module",
     "author": "Bed & Breakfast",
     "keywords": [
         "bed",
         "breakfast",
-        "package",
-        "template",
-        "open source"
+        "nestjs",
+        "http",
+        "module",
+        "httpmodule",
+        "timeout",
+        "network"
     ],
     "main": "lib/cjs/index.js",
     "module": "lib/esm/index.js",
