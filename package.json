@@ -1,6 +1,6 @@
 {
     "name": "@bed-and-breakfast/nestjs-improved-http-module",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Improved NestJS HttpModule",
     "private": false,
     "engines": {
