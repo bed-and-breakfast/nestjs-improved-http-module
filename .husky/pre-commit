@@ -1,0 +1,13 @@
+# Customize check-all-markdown to exclude files
+# npx check-all-markdown README.md --no-check-links &&
+npx markdown-doctest &&
+git add README.md &&
+
+npx format-package -w &&
+git add package.json &&
+
+npx rimraf lib && npx tsc && npx tsc -p tsconfig.cjs.json &&
+
+npx lint-staged &&
+
+npx jest --coverage --coverageThreshold='{"global":{"lines":"0"}}'
